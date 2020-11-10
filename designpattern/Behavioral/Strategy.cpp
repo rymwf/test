@@ -1,4 +1,8 @@
 #include <cstdio>
+/*
+could use templete
+*/
+
 class Strategy
 {
 public:
