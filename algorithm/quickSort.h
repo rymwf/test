@@ -1,3 +1,4 @@
+#pragma once
 #include <cstdio>
 #include <functional>
 #include <vector>
@@ -37,7 +38,6 @@ void quickSort2(std::vector<int>& arr)
     static std::function<void(std::vector<int> &, int, int)> f = [](std::vector<int> &arr, int l, int r) {
         if (l >= r)
             return;
-        int p = r;
         int p1 = l, p2 = l;
         for (; p2 < r; p2++)
         {
