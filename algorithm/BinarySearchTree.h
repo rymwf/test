@@ -56,7 +56,15 @@ namespace yzs
             return root == nullptr;
         }
 
-        void printTree(std::ostream out, BinaryNode *t) const;
+        void printTree(std::ostream &out, BinaryNode *t) const
+        {
+            if (t != nullptr)
+            {
+                printTree(out, t->left);
+                out << t->element << std::endl;
+                printTree(out, t->right);
+            }
+        }
 
         void clear(BinaryNode *&t)
         {
@@ -131,6 +139,11 @@ namespace yzs
             clear();
         }
 
+        int height(BinaryNode *t) const
+        {
+            return t == nullptr ? -1 : max(height(t->left), height(t->right)) + 1;
+        }
+
         const Comparable &findMin() const
         {
             return findMin(root);
@@ -148,9 +161,12 @@ namespace yzs
             return empty(root);
         }
 
-        void printTree(std::ostream out) const
+        void printTree(std::ostream &out) const
         {
-            printTree(out, root);
+            if (empty())
+                out << "empty tree";
+            else
+                printTree(out, root);
         }
 
         void clear()
